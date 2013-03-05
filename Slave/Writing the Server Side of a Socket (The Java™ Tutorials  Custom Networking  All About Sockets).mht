@@ -1,0 +1,1461 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: Writing the Server Side of a Socket (The Java? Tutorials > Custom Networking > All About Sockets)
+Date: Sat, 24 Mar 2007 18:13:42 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0069_01C76E40.27C39580"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3028
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0069_01C76E40.27C39580
+Content-Type: text/html;
+	charset="big5"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Writing the Server Side of a Socket (The Java&#8482; =
+Tutorials > Custom Networking > All About Sockets)</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dbig5">
+<STYLE type=3Dtext/css>.FigureCaption {
+	FONT-SIZE: smaller; MARGIN-LEFT: 1in; MARGIN-RIGHT: 1in; FONT-FAMILY: =
+sans-serif; TEXT-ALIGN: justify
+}
+#TopBar_bl {
+	BACKGROUND: url(../../images/java_bar_bl.gif) no-repeat 0px 100%; =
+WIDTH: 100%; HEIGHT: 60px
+}
+#TopBar_br {
+	BACKGROUND: url(../../images/java_bar_br.gif) no-repeat 100% 100%; =
+WIDTH: 100%; HEIGHT: 60px
+}
+#TopBar_tl {
+	BACKGROUND: url(../../images/java_bar_tl.gif) no-repeat 0px 0px; WIDTH: =
+100%; HEIGHT: 60px
+}
+#TopBar_tr {
+	BACKGROUND: url(../../images/java_bar_tr.gif) no-repeat 100% 0px; =
+WIDTH: 100%; HEIGHT: 60px
+}
+#TopBar {
+	FONT-WEIGHT: bold; BACKGROUND: url(../../images/java_bar.gif) #35556b; =
+MARGIN: 10px 10px 0px; COLOR: white; FONT-FAMILY: sans-serif; HEIGHT: =
+60px; min-width: 700px
+}
+
+@media Print   =20
+{
+#BreadCrumbs {
+	DISPLAY: none
+}
+#Download {
+	DISPLAY: none
+}
+    }
+#TopBar_right {
+	PADDING-RIGHT: 30px; FLOAT: right; LINE-HEIGHT: 14px; PADDING-TOP: 2px; =
+TEXT-ALIGN: center
+}
+
+@media Print   =20
+{
+#TopBar_right {
+	DISPLAY: none
+}
+    }
+#TopBar_right A {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: =
+0px; MARGIN: 3px; PADDING-TOP: 0px
+}
+#TopBar A:visited {
+	COLOR: white; TEXT-DECORATION: none
+}
+#TopBar A:link {
+	COLOR: white; TEXT-DECORATION: none
+}
+#TopBar A:hover {
+	COLOR: #35556b; BACKGROUND-COLOR: white
+}
+#TopBar A:active {
+	COLOR: #35556b; BACKGROUND-COLOR: white
+}
+#BreadCrumbs {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: =
+0.5em; PADDING-TOP: 4px; FONT-FAMILY: sans-serif
+}
+#BreadCrumbs A {
+	COLOR: blue
+}
+#BreadCrumbs A:visited {
+	TEXT-DECORATION: none
+}
+#BreadCrumbs A:link {
+	TEXT-DECORATION: none
+}
+#BreadCrumbs A:hover {
+	TEXT-DECORATION: underline
+}
+#BreadCrumbs A:active {
+	TEXT-DECORATION: underline
+}
+#PageTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 20px; MARGIN: 0px 5px 0.5em 0px; COLOR: =
+#e76f00; FONT-FAMILY: sans-serif
+}
+.LeftBar_shown {
+	MARGIN-TOP: 4px; FLOAT: left; MARGIN-BOTTOM: 2em; MARGIN-LEFT: 10px; =
+WIDTH: 13em
+}
+
+@media Print   =20
+{
+.LeftBar_shown {
+	DISPLAY: none
+}
+    }
+.LeftBar_hidden {
+	DISPLAY: none
+}
+#Footer {
+	PADDING-LEFT: 10px; MARGIN-RIGHT: 10px; PADDING-TOP: 10px
+}
+.NavBit {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0.5em; =
+PADDING-TOP: 4px; FONT-FAMILY: sans-serif
+}
+
+@media Print   =20
+{
+.NavBit {
+	DISPLAY: none
+}
+    }
+#TagNotes {
+	FONT-SIZE: smaller; FONT-FAMILY: sans-serif; TEXT-ALIGN: right
+}
+
+@media Print   =20
+{
+#TagNotes A:visited {
+	COLOR: #35556b; TEXT-DECORATION: none
+}
+#TagNotes A:link {
+	COLOR: #35556b; TEXT-DECORATION: none
+}
+    }
+#Contents A {
+	COLOR: blue
+}
+.NavBit A {
+	COLOR: blue
+}
+#TagNotes A {
+	COLOR: blue
+}
+#TagNotes A:visited {
+	TEXT-DECORATION: none
+}
+#TagNotes A:link {
+	TEXT-DECORATION: none
+}
+#Contents A:visited {
+	TEXT-DECORATION: none
+}
+#Contents A:link {
+	TEXT-DECORATION: none
+}
+.NavBit A:visited {
+	TEXT-DECORATION: none
+}
+.NavBit A:link {
+	TEXT-DECORATION: none
+}
+#TagNotes A:hover {
+	TEXT-DECORATION: underline
+}
+#TagNotes A:active {
+	TEXT-DECORATION: underline
+}
+#Contents A:hover {
+	TEXT-DECORATION: underline
+}
+#Contents A:active {
+	TEXT-DECORATION: underline
+}
+.NavBit A:hover {
+	TEXT-DECORATION: underline
+}
+.NavBit A:active {
+	TEXT-DECORATION: underline
+}
+#Contents {
+	FLOAT: left; FONT-FAMILY: sans-serif
+}
+
+@media Print   =20
+{
+#Contents {
+	DISPLAY: none
+}
+
+}
+
+@media Screen   =20
+{
+DIV.PrintHeaders {
+	DISPLAY: none
+}
+    }
+.linkLESSON {
+	MARGIN-LEFT: 0.5em; TEXT-INDENT: -0.5em
+}
+.nolinkLESSON {
+	MARGIN-LEFT: 0.5em; TEXT-INDENT: -0.5em
+}
+.linkAHEAD {
+	MARGIN-LEFT: 1.5em; TEXT-INDENT: -0.5em
+}
+.nolinkAHEAD {
+	MARGIN-LEFT: 1.5em; TEXT-INDENT: -0.5em
+}
+.linkQUESTIONS {
+	MARGIN-LEFT: 1.5em; TEXT-INDENT: -0.5em
+}
+.nolinkQUESTIONS {
+	MARGIN-LEFT: 1.5em; TEXT-INDENT: -0.5em
+}
+.linkBHEAD {
+	MARGIN-LEFT: 2.5em; TEXT-INDENT: -0.5em
+}
+.nolinkBHEAD {
+	MARGIN-LEFT: 2.5em; TEXT-INDENT: -0.5em
+}
+.linkCHEAD {
+	MARGIN-LEFT: 3.5em; TEXT-INDENT: -0.5em
+}
+.nolinkCHEAD {
+	MARGIN-LEFT: 3.5em; TEXT-INDENT: -0.5em
+}
+.nolinkLESSON {
+	FONT-WEIGHT: bold; COLOR: #e76f00
+}
+.nolinkAHEAD {
+	FONT-WEIGHT: bold; COLOR: #e76f00
+}
+.nolinkBHEAD {
+	FONT-WEIGHT: bold; COLOR: #e76f00
+}
+.nolinkCHEAD {
+	FONT-WEIGHT: bold; COLOR: #e76f00
+}
+.nolinkQUESTIONS {
+	FONT-WEIGHT: bold; COLOR: #e76f00
+}
+.MainFlow_indented {
+	MARGIN-BOTTOM: 2em; MARGIN-LEFT: 15em; MARGIN-RIGHT: 10px
+}
+.MainFlow_wide {
+	MARGIN-BOTTOM: 2em; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+
+@media Print   =20
+{
+.MainFlow_indented {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 10px; PADDING-TOP: =
+0px
+}
+.MainFlow_wide {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 10px; PADDING-TOP: =
+0px
+}
+    }
+H3 {
+	COLOR: #e76f00; FONT-FAMILY: sans-serif
+}
+H4 {
+	COLOR: #e76f00; FONT-FAMILY: sans-serif
+}
+H5 {
+	COLOR: #e76f00; FONT-FAMILY: sans-serif
+}
+#ToggleLeft {
+	DISPLAY: none
+}
+</STYLE>
+
+<SCRIPT type=3Dtext/javascript>=0A=
+    function leftBar() {=0A=
+        var nameq =3D 'tutorial_showLeftBar=3D'=0A=
+        var cookies =3D document.cookie.split(';');=0A=
+        for (var i =3D 0; i < cookies.length; i++) {=0A=
+            var cookieString =3D cookies[i];=0A=
+            while (cookieString.charAt(0) =3D=3D ' ') {=0A=
+                cookieString =3D cookieString.substring(1, =
+cookieString.length);=0A=
+            }=0A=
+            if (cookieString.indexOf(nameq) =3D=3D 0) {=0A=
+                cookieValue =3D  cookieString.substring(nameq.length,=0A=
+                        cookieString.length);=0A=
+                return cookieValue =3D=3D 'yes';=0A=
+            }=0A=
+        }=0A=
+        return true;=0A=
+    }=0A=
+=0A=
+    function showLeft(b) {=0A=
+        var contents =3D document.getElementById("LeftBar");=0A=
+        var main =3D document.getElementById("MainFlow");=0A=
+        var toggle =3D document.getElementById("ToggleLeft");=0A=
+        if (b) {=0A=
+            contents.className =3D "LeftBar_shown";=0A=
+            main.className =3D "MainFlow_indented";=0A=
+            toggle.innerHTML =3D "Hide the TOC";=0A=
+            document.cookie =3D 'tutorial_showLeftBar=3Dyes; path=3D/';=0A=
+        } else {=0A=
+            contents.className =3D "LeftBar_hidden";=0A=
+            main.className =3D "MainFlow_wide";=0A=
+            toggle.innerHTML =3D "Show the TOC";=0A=
+            document.cookie =3D 'tutorial_showLeftBar=3Dno; path=3D/';=0A=
+        }=0A=
+    }=0A=
+=0A=
+    function toggleLeft() {=0A=
+        showLeft(document.getElementById("LeftBar").className =3D=3D=0A=
+                "LeftBar_hidden");=0A=
+        document.getElementById("ToggleLeft").blur();=0A=
+    }=0A=
+=0A=
+    function load() {=0A=
+        showLeft(leftBar());=0A=
+        document.getElementById("ToggleLeft").style.display=3D"inline";=0A=
+    }=0A=
+    =0A=
+</SCRIPT>
+
+<META content=3D"MSHTML 6.00.2900.3059" name=3DGENERATOR></HEAD>
+<BODY onload=3Dload()>
+<DIV id=3DTopBar>
+<DIV id=3DTopBar_tr>
+<DIV id=3DTopBar_tl>
+<DIV id=3DTopBar_br>
+<DIV id=3DTopBar_bl>
+<DIV id=3DTopBar_right><A =
+href=3D"http://java.sun.com/javase/6/download.jsp"=20
+target=3D_blank>Download the JDK</A> <BR><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/search.html" =
+target=3D_blank>Search=20
+the Tutorials</A> <BR><A id=3DToggleLeft =
+href=3D"javascript:toggleLeft()">Hide the=20
+TOC</A> </DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV class=3DPrintHeaders><B>Trail:</B> Custom Networking =
+<BR><B>Lesson:</B> All=20
+About Sockets </DIV>
+<DIV class=3DLeftBar_shown id=3DLeftBar>
+<DIV id=3DContents>
+<DIV class=3DlinkLESSON><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/index.=
+html">All=20
+About Sockets</A></DIV>
+<DIV class=3DlinkAHEAD><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/defini=
+tion.html">What=20
+Is a Socket?</A></DIV>
+<DIV class=3DlinkAHEAD><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/readin=
+gWriting.html">Reading=20
+from and Writing to a Socket</A></DIV>
+<DIV class=3DnolinkAHEAD>Writing the Server Side of a =
+Socket</DIV></DIV></DIV>
+<DIV class=3DMainFlow_indented id=3DMainFlow><SPAN id=3DBreadCrumbs><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/index.html" =
+target=3D_top>Home=20
+Page</A> &gt; <A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/index.html"=20
+target=3D_top>Custom Networking</A> &gt; <A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/index.=
+html"=20
+target=3D_top>All About Sockets</A> </SPAN>
+<DIV class=3DNavBit><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/readin=
+gWriting.html"=20
+target=3D_top>&laquo;&nbsp;Previous</A>&nbsp;&#8226;&nbsp;<A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/TOC.html"=20
+target=3D_top>Trail</A>&nbsp;&#8226;&nbsp;<A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/datagrams/inde=
+x.html"=20
+target=3D_top>Next&nbsp;&raquo;</A> </DIV>
+<DIV id=3DPageTitle>Writing the Server Side of a Socket</DIV>
+<BLOCKQUOTE>This section shows you how to write a server and the client =
+that=20
+  goes with it. The server in the client/server pair serves up Knock =
+Knock=20
+  jokes. Knock Knock jokes are favored by children and are usually =
+vehicles for=20
+  bad puns. They go like this:=20
+  <P><STRONG>Server</STRONG>: "Knock knock!"<BR><STRONG>Client</STRONG>: =
+"Who's=20
+  there?"<BR><STRONG>Server</STRONG>: =
+"Dexter."<BR><STRONG>Client</STRONG>:=20
+  "Dexter who?"<BR><STRONG>Server</STRONG>: "Dexter halls with boughs of =
+
+  holly."<BR><STRONG>Client</STRONG>: "Groan."=20
+  <P>The example consists of two independently running Java programs: =
+the client=20
+  program and the server program. The client program is implemented by a =
+single=20
+  class, <CODE>KnockKnockClient</CODE>, and is very similar to the <A=20
+  class=3DSourceLink=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/EchoClient.java"=20
+  target=3D_blank><CODE>EchoClient</CODE></A> example from the previous =
+section.=20
+  The server program is implemented by two classes:=20
+  <CODE>KnockKnockServer</CODE> and <CODE>KnockKnockProtocol</CODE>,=20
+  <CODE>KnockKnockServer</CODE> contains the <CODE>main</CODE> method =
+for the=20
+  server program and performs the work of listening to the port, =
+establishing=20
+  connections, and reading from and writing to the socket.=20
+  <CODE>KnockKnockProtocol</CODE> serves up the jokes. It keeps track of =
+the=20
+  current joke, the current state (sent knock knock, sent clue, and so =
+on), and=20
+  returns the various text pieces of the joke depending on the current =
+state.=20
+  This object implements the protocol-the language that the client and =
+server=20
+  have agreed to use to communicate.=20
+  <P>The following section looks in detail at each class in both the =
+client and=20
+  the server and then shows you how to run them. </P></BLOCKQUOTE>
+<H3>The Knock Knock Server</H3>
+<BLOCKQUOTE>This section walks through the code that implements the =
+Knock=20
+  Knock server program. Here is the complete source for the <A =
+class=3DSourceLink=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/KnockKnockServer.java"=20
+  target=3D_blank><CODE>KnockKnockServer</CODE></A> class.=20
+  <P>The server program begins by creating a new =
+<CODE>ServerSocket</CODE>=20
+  object to listen on a specific port (see the statement in bold in the=20
+  following code segment). When writing a server, choose a port that is =
+not=20
+  already dedicated to some other service. <CODE>KnockKnockServer</CODE> =
+listens=20
+  on port 4444 because 4 happens to be my favorite number and port 4444 =
+is not=20
+  being used for anything else in my environment:=20
+  <BLOCKQUOTE><PRE>try {
+    <STRONG>serverSocket =3D new ServerSocket(4444);</STRONG>
+} catch (IOException e) {
+    System.out.println("Could not listen on port: 4444");
+    System.exit(-1);
+}
+</PRE></BLOCKQUOTE><CODE>ServerSocket</CODE> is a <CODE>java.net</CODE> =
+class=20
+  that provides a system-independent implementation of the server side =
+of a=20
+  client/server socket connection. The constructor for =
+<CODE>ServerSocket</CODE>=20
+  throws an exception if it can't listen on the specified port (for =
+example, the=20
+  port is already being used). In this case, the =
+<CODE>KnockKnockServer</CODE>=20
+  has no choice but to exit.=20
+  <P>If the server successfully binds to its port, then the=20
+  <CODE>ServerSocket</CODE> object is successfully created and the =
+server=20
+  continues to the next step--accepting a connection from a client =
+(shown in=20
+  bold):=20
+  <BLOCKQUOTE><PRE>Socket clientSocket =3D null;
+try {
+    <STRONG>clientSocket =3D serverSocket.accept();</STRONG>
+} catch (IOException e) {
+    System.out.println("Accept failed: 4444");
+    System.exit(-1);
+}
+</PRE></BLOCKQUOTE>The <CODE>accept</CODE> method waits until a client =
+starts=20
+  up and requests a connection on the host and port of this server (in =
+this=20
+  example, the server is running on the hypothetical machine taranis on =
+port=20
+  4444). When a connection is requested and successfully established, =
+the accept=20
+  method returns a new <CODE>Socket</CODE> object which is bound to the =
+same=20
+  local port and has it's remote address and remote port set to that of =
+the=20
+  client. The server can communicate with the client over this new=20
+  <CODE>Socket</CODE> and continue to listen for client connection =
+requests on=20
+  the original <CODE>ServerSocket</CODE> This particular version of the =
+program=20
+  doesn't listen for more client connection requests. However, a =
+modified=20
+  version of the program is provided in <A=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/client=
+Server.html#later">Supporting=20
+  Multiple Clients</A>.=20
+  <P>After the server successfully establishes a connection with a =
+client, it=20
+  communicates with the client using this code:=20
+  <BLOCKQUOTE><PRE>PrintWriter out =3D new PrintWriter(
+                      clientSocket.getOutputStream(), true);
+BufferedReader in =3D new BufferedReader(
+                        new InputStreamReader(
+                            clientSocket.getInputStream()));
+String inputLine, outputLine;
+
+<STRONG>// initiate conversation with client
+KnockKnockProtocol kkp =3D new KnockKnockProtocol();
+outputLine =3D kkp.processInput(null);
+out.println(outputLine);</STRONG>
+
+while ((inputLine =3D in.readLine()) !=3D null) {=09
+    outputLine =3D kkp.processInput(inputLine);
+    out.println(outputLine);
+    if outputLine.equals("Bye."))
+        break;
+}
+</PRE></BLOCKQUOTE>This code:=20
+  <OL>
+    <LI>Gets the socket's input and output stream and opens readers and =
+writers=20
+    on them.=20
+    <LI>Initiates communication with the client by writing to the socket =
+(shown=20
+    in bold).=20
+    <LI>Communicates with the client by reading from and writing to the =
+socket=20
+    (the <CODE>while</CODE> loop). </LI></OL>Step 1 is already familiar. =
+Step 2 is=20
+  shown in bold and is worth a few comments. The bold statements in the =
+code=20
+  segment above initiate the conversation with the client. The code =
+creates a=20
+  <CODE>KnockKnockProtocol</CODE> object-the object that keeps track of =
+the=20
+  current joke, the current state within the joke, and so on.=20
+  <P>After the <CODE>KnockKnockProtocol</CODE> is created, the code =
+calls=20
+  <CODE>KnockKnockProtocol</CODE>'s <CODE>processInput</CODE> method to =
+get the=20
+  first message that the server sends to the client. For this example, =
+the first=20
+  thing that the server says is "Knock! Knock!" Next, the server writes =
+the=20
+  information to the <CODE>PrintWriter</CODE> connected to the client =
+socket,=20
+  thereby sending the message to the client.=20
+  <P>Step 3 is encoded in the <CODE>while</CODE> loop. As long as the =
+client and=20
+  server still have something to say to each other, the server reads =
+from and=20
+  writes to the socket, sending messages back and forth between the =
+client and=20
+  the server.=20
+  <P>The server initiated the conversation with a "Knock! Knock!" so =
+afterwards=20
+  the server must wait for the client to say "Who's there?" As a result, =
+the=20
+  while loop iterates on a read from the input stream. The readLine =
+method waits=20
+  until the client responds by writing something to its output stream =
+(the=20
+  server's input stream). When the client responds, the server passes =
+the=20
+  client's response to the <CODE>KnockKnockProtocol</CODE> object and =
+asks the=20
+  <CODE>KnockKnockProtocol</CODE> object for a suitable reply. The =
+server=20
+  immediately sends the reply to the client via the output stream =
+connected to=20
+  the socket, using a call to println. If the server's response =
+generated from=20
+  the <CODE>KnockKnockServer</CODE> object is "Bye." this indicates that =
+the=20
+  client doesn't want any more jokes and the loop quits.=20
+  <P>The <CODE>KnockKnockServer</CODE> class is a well-behaved server, =
+so the=20
+  last several lines of this section of <CODE>KnockKnockServer</CODE> =
+clean up=20
+  by closing all of the input and output streams, the client socket, and =
+the=20
+  server socket:=20
+  <BLOCKQUOTE><PRE>out.close();
+in.close();
+clientSocket.close();
+serverSocket.close();
+</PRE></BLOCKQUOTE></BLOCKQUOTE>
+<H3>The Knock Knock Protocol</H3>
+<BLOCKQUOTE>The <A class=3DSourceLink=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/KnockKnockProtocol.java"=20
+  target=3D_blank><CODE>KnockKnockProtocol</CODE></A> class implements =
+the=20
+  protocol that the client and server use to communicate. This class =
+keeps track=20
+  of where the client and the server are in their conversation and =
+serves up the=20
+  server's response to the client's statements. The=20
+  <CODE>KnockKnockServer</CODE> object contains the text of all the =
+jokes and=20
+  makes sure that the client gives the proper response to the server's=20
+  statements. It wouldn't do to have the client say "Dexter who?" when =
+the=20
+  server says "Knock! Knock!"=20
+  <P>All client/server pairs must have some protocol by which they speak =
+to each=20
+  other; otherwise, the data that passes back and forth would be =
+meaningless.=20
+  The protocol that your own clients and servers use depends entirely on =
+the=20
+  communication required by them to accomplish the task. =
+</P></BLOCKQUOTE>
+<H3>The Knock Knock Client</H3>
+<BLOCKQUOTE>The <A class=3DSourceLink=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/KnockKnockClient.java"=20
+  target=3D_blank><CODE>KnockKnockClient</CODE></A> class implements the =
+client=20
+  program that speaks to the <CODE>KnockKnockServer</CODE>.=20
+  <CODE>KnockKnockClient</CODE> is based on the <CODE>EchoClient</CODE> =
+program=20
+  in the previous section, <A=20
+  =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/readin=
+gWriting.html">Reading=20
+  from and Writing to a Socket</A> and should be somewhat familiar to =
+you. But=20
+  we'll go over the program anyway and look at what's happening in the =
+client in=20
+  the context of what's going on in the server.=20
+  <P>When you start the client program, the server should already be =
+running and=20
+  listening to the port, waiting for a client to request a connection. =
+So, the=20
+  first thing the client program does is to open a socket that is =
+connected to=20
+  the server running on the hostname and port specified:=20
+  <BLOCKQUOTE><PRE><STRONG>kkSocket =3D new Socket("taranis", =
+4444);</STRONG>
+out =3D new PrintWriter(kkSocket.getOutputStream(), true);
+in =3D new BufferedReader(new InputStreamReader(
+                            kkSocket.getInputStream()));
+</PRE></BLOCKQUOTE>When creating its socket, =
+<CODE>KnockKnockClient</CODE>=20
+  uses the host name <CODE>taranis</CODE>, the name of a hypothetical =
+machine on=20
+  our network. When you type in and run this program, change the host =
+name to=20
+  the name of a machine on your network. This is the machine on which =
+you will=20
+  run the <CODE>KnockKnockServer</CODE>.=20
+  <P>The <CODE>KnockKnockClient</CODE> program also specifies the port =
+number=20
+  4444 when creating its socket. This is a <EM>remote port =
+number</EM>--the=20
+  number of a port on the server machine--and is the port to which=20
+  <CODE>KnockKnockServer</CODE> is listening. The client's socket is =
+bound to=20
+  any available <EM>local port</EM>--a port on the client machine. =
+Remember that=20
+  the server gets a new socket as well. That socket is bound to local =
+port=20
+  number 4444 on its machine. The server's socket and the client's =
+socket are=20
+  connected.=20
+  <P>Next comes the while loop that implements the communication between =
+the=20
+  client and the server. The server speaks first, so the client must =
+listen=20
+  first. The client does this by reading from the input stream attached =
+to the=20
+  socket. If the server does speak, it says "Bye." and the client exits =
+the=20
+  loop. Otherwise, the client displays the text to the standard output =
+and then=20
+  reads the response from the user, who types into the standard input. =
+After the=20
+  user types a carriage return, the client sends the text to the server =
+through=20
+  the output stream attached to the socket.=20
+  <BLOCKQUOTE><PRE>while ((fromServer =3D in.readLine()) !=3D null) {
+    System.out.println("Server: " + fromServer);
+    if (fromServer.equals("Bye."))
+        break;
+    fromUser =3D stdIn.readLine();
+    if (fromUser !=3D null) {
+        System.out.println("Client: " + fromUser);
+        out.println(fromUser);
+    }
+}
+</PRE></BLOCKQUOTE>The communication ends when the server asks if the =
+client=20
+  wishes to hear another joke, the client says no, and the server says =
+"Bye."=20
+  <P>In the interest of good housekeeping, the client closes its input =
+and=20
+  output streams and the socket:=20
+  <BLOCKQUOTE><PRE>out.close();
+in.close();
+stdIn.close();
+kkSocket.close();
+</PRE></BLOCKQUOTE></BLOCKQUOTE>
+<H3>Running the Programs</H3>
+<BLOCKQUOTE>You must start the server program first. To do this, run the =
+
+  server program using the Java interpreter, just as you would any other =
+Java=20
+  application. Remember to run the server on the machine that the client =
+program=20
+  specifies when it creates the socket.=20
+  <P>Next, run the client program. Note that you can run the client on =
+any=20
+  machine on your network; it does not have to run on the same machine =
+as the=20
+  server.=20
+  <P>If you are too quick, you might start the client before the server =
+has a=20
+  chance to initialize itself and begin listening on the port. If this =
+happens,=20
+  you will see a stack trace from the client. If this happens, just =
+restart the=20
+  client.=20
+  <P>If you forget to change the host name in the source code for the=20
+  <CODE>KnockKnockClient</CODE> program, you will see the following =
+error=20
+  message:=20
+  <BLOCKQUOTE><PRE>Don't know about host: taranis
+</PRE></BLOCKQUOTE>To fix this, modify the <CODE>KnockKnockClient</CODE> =
+
+  program and provide a valid host name for your network. Recompile the =
+client=20
+  program and try again.=20
+  <P>If you try to start a second client while the first client is =
+connected to=20
+  the server, the second client just hangs. The next section, <A=20
+  =
+href=3D'http://java.sun.com/docs/books/tutorial/networking/sockets/client=
+Server.html#later"'>Supporting=20
+  Multiple Clients</A>, talks about supporting multiple clients.=20
+  <P>When you successfully get a connection between the client and =
+server, you=20
+  will see the following text displayed on your screen:=20
+  <BLOCKQUOTE><PRE>Server: Knock! Knock!
+</PRE></BLOCKQUOTE>Now, you must respond with:=20
+  <BLOCKQUOTE><PRE><STRONG>Who's there?</STRONG>
+</PRE></BLOCKQUOTE>The client echoes what you type and sends the text to =
+the=20
+  server. The server responds with the first line of one of the many =
+Knock Knock=20
+  jokes in its repertoire. Now your screen should contain this (the text =
+you=20
+  typed is in bold):=20
+  <BLOCKQUOTE><PRE>Server: Knock! Knock!
+<STRONG>Who's there?</STRONG>
+Client: Who's there?
+Server: Turnip
+</PRE></BLOCKQUOTE>Now, you respond with:=20
+  <BLOCKQUOTE><PRE>Turnip who?"
+</PRE></BLOCKQUOTE>Again, the client echoes what you type and sends the =
+text=20
+  to the server. The server responds with the punch line. Now your =
+screen should=20
+  contain this:=20
+  <BLOCKQUOTE><PRE>Server: Knock! Knock!
+<STRONG>Who's there?</STRONG>
+Client: Who's there?
+Server: Turnip
+<STRONG>Turnip who?</STRONG>
+Client: Turnip who?
+Server: Turnip the heat, it's cold in here! Want another? (y/n)
+</PRE></BLOCKQUOTE>If you want to hear another joke, type =
+<STRONG>y</STRONG>;=20
+  if not, type <STRONG>n</STRONG>. If you type <STRONG>y</STRONG>, the =
+server=20
+  begins again with "Knock! Knock!" If you type <STRONG>n</STRONG>, the =
+server=20
+  says "Bye." thus causing both the client and the server to exit.=20
+  <P>If at any point you make a typing mistake, the=20
+  <CODE>KnockKnockServer</CODE> object catches it and the server =
+responds with a=20
+  message similar to this:=20
+  <BLOCKQUOTE><PRE>Server: You're supposed to say "Who's there?"!
+</PRE></BLOCKQUOTE>The server then starts the joke over again:=20
+  <BLOCKQUOTE><PRE>Server: Try again. Knock! Knock!
+</PRE></BLOCKQUOTE>Note that the <CODE>KnockKnockProtocol</CODE> object =
+is=20
+  particular about spelling and punctuation but not about =
+capitalization.=20
+</BLOCKQUOTE><A name=3Dlater>
+<H3>Supporting Multiple Clients</H3></A>
+<BLOCKQUOTE>To keep the <CODE>KnockKnockServer</CODE> example simple, we =
+
+  designed it to listen for and handle a single connection request. =
+However,=20
+  multiple client requests can come into the same port and, =
+consequently, into=20
+  the same <CODE>ServerSocket</CODE>. Client connection requests are =
+queued at=20
+  the port, so the server must accept the connections sequentially. =
+However, the=20
+  server can service them simultaneously through the use of threads - =
+one thread=20
+  per each client connection.=20
+  <P>The basic flow of logic in such a server is this:=20
+  <BLOCKQUOTE><PRE>while (true) {
+    accept a connection ;
+    create a thread to deal with the client ;
+end while
+</PRE></BLOCKQUOTE>The thread reads from and writes to the client =
+connection=20
+  as necessary.=20
+  <P>
+  <BLOCKQUOTE>
+    <HR>
+    <STRONG>Try This:</STRONG>&nbsp; Modify the =
+<CODE>KnockKnockServer</CODE> so=20
+    that it can service multiple clients at the same time. Two classes =
+compose=20
+    our solution: <A class=3DSourceLink=20
+    =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/KKMultiServer.java"=20
+    target=3D_blank><CODE>KKMultiServer</CODE></A> and <A =
+class=3DSourceLink=20
+    =
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/exampl=
+es/KKMultiServerThread.java"=20
+    target=3D_blank><CODE>KKMultiServerThread</CODE></A>.=20
+    <CODE>KKMultiServer</CODE> loops forever, listening for client =
+connection=20
+    requests on a <CODE>ServerSocket</CODE>. When a request comes in,=20
+    <CODE>KKMultiServer</CODE> accepts the connection, creates a new=20
+    <CODE>KKMultiServerThread</CODE> object to process it, hands it the =
+socket=20
+    returned from accept, and starts the thread. Then the server goes =
+back to=20
+    listening for connection requests. The =
+<CODE>KKMultiServerThread</CODE>=20
+    object communicates to the client by reading from and writing to the =
+socket.=20
+    Run the new Knock Knock server and then run several clients in =
+succession.=20
+    <HR>
+  </BLOCKQUOTE></BLOCKQUOTE>
+<DIV class=3DNavBit><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/sockets/readin=
+gWriting.html"=20
+target=3D_top>&laquo; Previous</A> &#8226; <A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/TOC.html"=20
+target=3D_top>Trail</A> &#8226; <A=20
+href=3D"http://java.sun.com/docs/books/tutorial/networking/datagrams/inde=
+x.html"=20
+target=3D_top>Next &raquo;</A> </DIV></DIV>
+<DIV id=3DFooter>
+<DIV id=3DTagNotes>Problems with the examples? Try <A=20
+href=3D"http://java.sun.com/docs/books/tutorial/information/run-examples.=
+html"=20
+target=3D_blank>Compiling and Running the Examples: FAQs</A>. =
+<BR>Complaints?=20
+Compliments? Suggestions? <A=20
+href=3D"http://developer.sun.com/contact/tutorial_feedback.jsp" =
+target=3D_blank>Give=20
+us your feedback</A>. <BR><BR><A=20
+href=3D"http://java.sun.com/docs/books/tutorial/information/copyright.htm=
+l"=20
+target=3D_blank>Copyright</A> 1995-2006 Sun Microsystems, Inc. All =
+rights=20
+reserved. <SPAN id=3DDownload></SPAN></DIV></DIV>
+<DIV class=3DPrintHeaders><B>Previous page:</B> Reading from and Writing =
+to a=20
+Socket <BR><B>Next page:</B> All About Datagrams </DIV>
+<SCRIPT language=3DJavaScript=20
+src=3D"http://java.sun.com/js/omi/jsc/s_code_remote.js"></SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0069_01C76E40.27C39580
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://java.sun.com/js/omi/jsc/s_code_remote.js
+
+/* SiteCatalyst Code Version: G.5 */
+/* SMI Version 6.3 */
+/*Note to SMI web developers. Do not install or test this code on your =
+site without approval from the .SUN organization!*/
+/*=20
+Convert all index.html, index.jsp, etc. to foo/.
+Increase s_hier to 15 levels
+Add java.net to internal links.
+*/
+
+/************************** CONFIG SECTION **************************/
+
+/* Set the Report Suite ID(s) and site ID for each Sun site. The site ID =
+
+   is pre-pended to pageNames and channel names. */
+   var s_account=3D"sunglobal,sundeveloper"
+// var s_account=3D"devsunjavas"
+
+/* Uncomment one of the following */
+var s_siteid =3D "jsc:"
+
+var s_dynamicAccountSelection=3Dfalse
+var s_dynamicAccountList=3D""
+
+var =
+s_linkInternalFilters=3D"javascript:,sun.com,java.com,opensolaris.org,sun=
+-catalogue.com,java.net,netbeans.org,globalspecials.sun.com"
+
+/* List s_prop and s_eVar variables to be passed during =
+custom/exit/download links.
+   Otherwise, values passed in are ignored. */
+var s_linkTrackVars=3D"None"
+
+/* List event values in "s_events" to be passed during =
+custom/exit/download links.
+   Otherwise, events are ignored by default. */
+var s_linkTrackEvents=3D"None"
+
+/* Plugin Config - may be specific to each Sun site */
+var s_usePlugins=3Dtrue
+
+function s_doPlugins() {
+  /* Add calls to plugins here */
+        /*pageType 404 fix */
+        if(s_pageType=3D=3D""){
+  /* External campaigns */
+  if(s_campaign=3D=3D"")
+    s_vp_getCGI('s_campaign','cid');
+/* Campaign Pathing-30 minutes */
+  =
+s_vp_getCustomPagePath("s_prop4",s_vp_getValue("s_campaign"),"cmpPath","c=
+id=3D");
+/* Campaign Page Views */
+	s_vp_setAndPersistValue('s_prop5',s_vp_getValue('s_campaign'),1.0/48);
+  // Internal campaigns
+  s_vp_getCGI('s_eVar1','intcmp');
+  // RSS Feeds
+  s_vp_getCGI('s_prop24','feed');
+//  s_vp_getFormAbandonState("s_prop1","o","Form Abandonment");
+        }
+}
+
+// ###################################################
+// CODE CHANGE FOR FILE: PROTOCOL EXCLUSION 6/28/2005
+// ###################################################
+// NEW CODE:
+   var s_isValid =3D true;
+   if (location.protocol=3D=3D"file:") { s_isValid=3Dfalse; }
+// END CODE CHANGE
+
+/***************** STANDARD CODE FOR ALL SUN SITES ******************/
+/**********TO BE CHANGED ONLY BY SMI .SUN PROGRAM MANAGEMENT*****/
+/* Make certain these variables are defined, if not on page */
+if (typeof s_channel=3D=3D'undefined')
+   var s_channel =3D "";
+if (typeof s_pageName=3D=3D'undefined')
+   var s_pageName =3D "";  =20
+if(typeof s_events=3D=3D'undefined')
+  var s_events=3D"";
+if(typeof s_campaign=3D=3D'undefined')
+  var s_campaign=3D"";
+if(typeof s_hier1=3D=3D'undefined')
+  var s_hier1=3D"";
+if (typeof s_pageType=3D=3D'undefined')
+  var s_pageType=3D"";
+       =20
+        /*pageType 404 fix */  =20
+        if(s_pageType=3D=3D""){
+/* Check for this common problem */
+if (s_pageName.toLowerCase()=3D=3D"document.title"){
+  s_pageName=3Ddocument.title;
+}
+
+/* Use URL as default page name unless s_pageName already populated. */
+if (typeof s_pageName!=3D'undefined') {
+    // See if it has a value
+    if (s_pageName=3D=3D"") {
+        s_pageName=3Dwindow.top.location.pathname.toLowerCase();
+        var s_iNames =3D =
+["index.html","index.jsp","index.htm","index.shtml","index.xml","index.jh=
+tml","index.jshtml","index.jspa","index.php"];
+        for (var a=3D0; a<s_iNames.length; a++) {
+            var s_iName =3D "/"+s_iNames[a];
+            if (s_pageName.indexOf(s_iName) > -1 && =
+s_pageName.indexOf(s_iName) =3D=3D s_pageName.length - s_iName.length) {
+                s_pageName =3D s_pageName.substring(0, s_pageName.length =
+- s_iNames[a].length);
+            }
+        }
+    }
+}
+        }
+var s_disableLegacyVars=3Dtrue
+var s_eVarCFG=3D""
+
+        /*pageType 404 fix */
+        if(s_pageType=3D=3D""){
+/* Link Tracking Config */
+var s_trackDownloadLinks=3Dtrue  // downloads
+var s_trackExternalLinks=3Dtrue  // external links
+var s_trackInlineStats=3Dtrue    // ClickMap
+var =
+s_linkDownloadFileTypes=3D"exe,zip,wav,mp3,mov,mpg,avi,doc,pdf,xls,bin,ta=
+r,Z,gz"
+var s_linkLeaveQueryString=3Dfalse
+
+/* Populate "s_channel" variable (if not already populated). Based on 15 =
+levels of directory. */
+if(s_channel=3D=3D""){
+  var s_t1=3D0
+  var s_t2=3D0
+  var s_du=3D""
+  s_du=3Dwindow.top.location.href.toLowerCase()
+  if((s_t1=3Ds_du.indexOf("://"))>=3D0){
+    if((s_t2=3Ds_du.indexOf("/",s_t1+3))>=3D(s_t1+3)){
+      if(s_du.indexOf(".",s_t1+3)<s_t2){
+        var s_c2=3D""
+      =20
+        s_t1=3Ds_t2+1
+        s_t2=3Ds_du.lastIndexOf("/")
+        s_channel=3Ds_du.substring(s_t1,s_t2)
+      =20
+        // Replace all "/" chars with ":"
+        for(s_t2=3D0; s_t2<s_channel.length; s_t2++){
+          if(s_channel.charAt(s_t2)=3D=3D"/"){
+            // Bogus code, but JavaScript 1.0-compatible
+            =
+s_c2=3Ds_channel.substring(0,s_t2)+":"+s_channel.substring(s_t2+1,s_chann=
+el.length)
+            s_channel=3Ds_c2
+          }
+        }
+      }
+    }
+   =20
+ =20
+    // Remove everything after the fifteenth "/"
+    s_t1=3D0
+    for(s_t2=3D0;s_t2<s_channel.length;s_t2++){
+      if(s_channel.charAt(s_t2)=3D=3D":"){
+        s_t1++
+        if(s_t1=3D=3D15){
+          s_channel=3Ds_channel.substring(0,s_t1-1)
+          break
+        }
+      }
+    }
+  }
+}
+
+/* Places entire path into Hierarchy variable, or just s_channel if =
+populated on page. */
+
+if(s_hier1=3D=3D""){
+	if(s_channel!=3D=3D""){
+      s_hier1=3Ds_siteid+s_channel
+    }
+}
+
+
+/* STANDARD SUN GLOBAL ACCOUNT CODE: pre-pend "pageName", "channel", and =
+"s_hier" with "s_siteid" if not already prepended*/
+if(typeof s_siteid!=3D'undefined'){
+  if(typeof s_pageName!=3D'undefined'&&s_pageName.length>0){
+    if(s_pageName.substr(0,s_siteid.length).toLowerCase()!=3Ds_siteid){
+      s_pageName=3Ds_siteid+s_pageName;
+    }
+  }
+  if(s_channel.length>0){
+    if (s_channel.substr(0,s_siteid.length).toLowerCase()!=3Ds_siteid){
+        s_channel=3Ds_siteid+s_channel;
+    }
+  }
+if(s_hier1.length>0){
+    if (s_hier1.substr(0,s_siteid.length).toLowerCase()!=3Ds_siteid){
+        s_hier1=3Ds_siteid+s_hier1;
+    }
+  }
+}
+
+/* PUT SITE_ID INTO S_PROP2*/
+if(typeof s_siteid=3D=3D'undefined'){var s_siteid=3D""};
+if(typeof s_prop2=3D=3D'undefined'){var s_prop2=3D""};
+   s_prop2=3Ds_siteid;
+        }
+
+/************************** PLUGINS SECTION *************************/
+/* You may insert any plugins you wish to use here.                 */
+/*
+ * Plugin: Get State Of Form On Abandon
+ New Form Abandon Plugin goes here when available.
+ */
+
+/*
+ * Plugin: Get Query String CGI Variable Value
+ */
+function s_vp_getCGI(vs,k)
+        {var v=3D'';if(k&&s_wd.location.search){var =
+q=3Ds_wd.location.search,
+        =
+qq=3Dq.indexOf('?');q=3Dqq<0?q:q.substring(qq+1);v=3Ds_pt(q,'&',s_cgif,
+        k)}s_vpr(vs,v)}function s_cgif(t,k){if(t){var =
+te=3Dt.indexOf('=3D'),
+        =
+sk=3Dte<0?t:t.substring(0,te),sv=3Dte<0?'True':t.substring(te+1);if(
+        sk=3D=3Dk)return s_epa(sv)}return ''}
+/*=20
+Plugin: Custom Page Path v1.0 (Campaign Pathing-30 minutes)
+*/
+function s_vp_getCustomPagePath(s,v,c,p) {
+var pn=3Ds_vp_getValue("s_pageName");
+var t=3Dnew Date;t.setTime(t.getTime()+1800000);=20
+if(v){if(s_c_w(c,v,t)){s_vpr(s,p+v+":"+pn)}}
+else{v=3Ds_c_r(c);if(v){s_c_w(c,v,t);s_vpr(s,pn);}}
+}
+/*
+ * Plugin: setAndPersistValue 0.1 - get a value on every page-30 minutes
+ */
+function s_vp_setAndPersistValue(vs,v,a){
+	var l,e=3Dnew Date;if(v){e.setTime(e.getTime()+a*86400000);s_c_w(
+	's_p_'+vs,v,a?e:a)};l=3Ds_c_r('s_p_'+vs);s_vpr(vs,l)}
+/*
+ * Plugin: Get Plugin Modified Value
+ */
+function s_vp_getValue(vs)
+        {var k=3Dvs.substring(0,2)=3D=3D's_'?vs.substring(2):vs;return =
+s_wd[
+        's_vpm_'+k]?s_wd['s_vpv_'+k]:s_gg(k)}
+/*
+ * Plugin Utilities v2.0 (Required For All Plugins)
+ */
+function s_vpr(vs,v){if(s_wd[vs])s_wd[vs]=3Ds_wd[vs];else s_wd[vs]=3D''
+if(vs.substring(0,2) =3D=3D =
+'s_')vs=3Dvs.substring(2);s_wd['s_vpv_'+vs]=3Dv
+s_wd['s_vpm_'+vs]=3D1}function s_dt(tz,t){var d=3Dnew =
+Date;if(t)d.setTime(
+t);d=3Dnew Date(d.getTime()+(d.getTimezoneOffset()*60*1000))
+return new Date(Math.floor(d.getTime()+(tz*60*60*1000)))}
+function s_vh_gt(k,v){var =
+vh=3D'|'+s_c_r('s_vh_'+k),vi=3Dvh.indexOf('|'+v
++'=3D'),ti=3Dvi<0?vi:vi+2+v.length,pi=3Dvh.indexOf('|',ti),t=3Dti<0?'':
+vh.substring(ti,pi<0?vh.length:pi);return t}function s_vh_gl(k){var
+vh=3Ds_c_r('s_vh_'+k),e=3Dvh?vh.indexOf('=3D'):0;return =
+vh?(vh.substring(0,
+e?e:vh.length)):''}function s_vh_s(k,v){if(k&&v){var e=3Dnew Date,st=3D
+e.getTime(),y=3De.getYear(),c=3D's_vh_'+k,vh=3D'|'+s_c_r(c)+'|',t=3Ds_vh_=
+gt(k,
+v);e.setYear((y<1900?y+1900:y)+5);if(t)vh=3Ds_rep(vh,'|'+v+'=3D'+t+'|','|=
+'
+);if(vh.substring(0,1)=3D=3D'|')vh=3Dvh.substring(1);if(vh.substring(
+vh.length-1,vh.length)=3D=3D'|')vh=3Dvh.substring(0,vh.length-1);vh=3Dv
++'=3D[PCC]'+(vh?'|'+vh:'');s_c_w(c,vh,e);if(s_vh_gt(k,v)!=3D'[PCC]')
+return 0;vh=3Ds_rep(vh,'[PCC]',st);s_c_w(c,vh,e)}return 1}
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var =
+s_un,s_ios=3D0,s_q=3D'',s_code=3D'',code=3D'',s_bcr=3D0,s_lnk=3D'',s_eo=3D=
+'',
+s_vb,s_pl,s_tfs=3D0,s_etfs=3D0,s_wd=3Dwindow,s_d=3Ds_wd.document,s_ssl=3D=
+(
+s_wd.location.protocol.toLowerCase().indexOf('https')>=3D0),s_n=3D
+navigator,s_u=3Ds_n.userAgent,s_apn=3Ds_n.appName,s_v=3Ds_n.appVersion,
+s_apv,s_i,s_ie=3Ds_v.indexOf('MSIE '),s_ns6=3Ds_u.indexOf('Netscape6/')
+if(s_v.indexOf('Opera')>=3D0||s_u.indexOf('Opera')>=3D0)s_apn=3D'Opera';v=
+ar
+s_isie=3D(s_apn=3D=3D'Microsoft Internet =
+Explorer'),s_isns=3D(s_apn=3D=3D
+'Netscape'),s_isopera=3D(s_apn=3D=3D'Opera'),s_ismac=3D(s_u.indexOf('Mac'=
+)>=3D0)
+if(s_ie>0){s_apv=3DparseInt(s_i=3Ds_v.substring(s_ie+5));if(s_apv>3)s_apv=
+=3D
+parseFloat(s_i)}else if(s_ns6>0)s_apv=3DparseFloat(s_u.substring(s_ns6
++10));else s_apv=3DparseFloat(s_v);function s_fl(s,l){return (s+''
+).substring(0,l)}function s_co(o){if(!o)return o;var n=3Dnew Object
+for(x in o)n[x]=3Do[x];return n}function s_num(x){var =
+s=3Dx.toString(),g=3D
+'0123456789',p,d;for(p=3D0;p<s.length;p++){d=3Ds.substring(p,p+1);if(
+g.indexOf(d)<0)return 0}return 1}function s_rep(s,o,n){var i=3D
+s.indexOf(o),l=3Dn.length>0?n.length:1;while(s&&i>=3D0){s=3Ds.substring(0=
+,i)
++n+s.substring(i+o.length);i=3Ds.indexOf(o,i+l)}return s}function s_ape(
+s){return s?s_rep(escape(''+s),'+','%2B'):s}function s_epa(s){
+return s?unescape(s_rep(''+s,'+',' ')):s}function s_pt(s,d,f,a){var t=3D
+s,x=3D0,y,r;while(t){y=3Dt.indexOf(d);y=3Dy<0?t.length:y;t=3Dt.substring(=
+0,y)
+r=3Df(t,a);if(r)return =
+r;x+=3Dy+d.length;t=3Ds.substring(x,s.length);t=3Dx<
+s.length?t:''}return ''}function =
+s_isf(t,a){if(t.substring(0,2)=3D=3D's_')
+t=3Dt.substring(2);return (t!=3D''&&t=3D=3Da)}function =
+s_fsf(t,a){if(s_pt(a,
+',',s_isf,t))s_fsg+=3D(s_fsg!=3D''?',':'')+t;return 0}var s_fsg
+function s_fs(s,f){s_fsg=3D'';s_pt(s,',',s_fsf,f);return s_fsg}var
+s_c_d=3D'';function s_c_gdf(t,a){if(!s_num(t))return 1;return 0}
+function s_c_gd(){var d=3Ds_wd.location.hostname,n=3Ds_gg(
+'cookieDomainPeriods'),p;if(d&&!s_c_d){n=3Dn?parseInt(n):2;n=3Dn>2?n:2;p=3D=
+
+d.lastIndexOf('.');while(p>=3D0&&n>1){p=3Dd.lastIndexOf('.',p-1);n--}
+s_c_d=3Dp>0&&s_pt(d,'.',s_c_gdf,0)?d.substring(p):''}return s_c_d}
+function s_c_r(k){k=3Ds_ape(k);var c=3D' '+s_d.cookie,s=3Dc.indexOf(' =
+'+k
++'=3D'),e=3Ds<0?s:c.indexOf(';',s),v=3Ds<0?'':s_epa(c.substring(s+2
++k.length,e<0?c.length:e));return v}function s_c_w(k,v,e){var d=3D
+s_c_gd(),l=3Ds_gg('cookieLifetime');v=3D''+v;l=3Dl?(''+l).toUpperCase():'=
+'
+if(e&&l!=3D'SESSION'&&l!=3D'NONE'){l=3DparseInt(l);if(l){e=3Dnew Date
+e.setTime(e.getTime()+(parseInt(l)*1000))}}if(k&&l!=3D'NONE'){
+s_d.cookie=3Dk+'=3D'+s_ape(v)+'; path=3D/;'+(e&&l!=3D'SESSION'?' =
+expires=3D'
++e.toGMTString()+';':'')+(d?' domain=3D'+d+';':'');return =
+s_c_r(k)=3D=3Dv}
+return 0}function s_cet(f,a,et,oe,fb){var r,d=3D0
+/*@cc_on@if(@_jscript_version>=3D5){try{return f(a)}catch(e){return =
+et(e)}d=3D1}@end@*/
+if(!d){if(s_ismac&&s_u.indexOf('MSIE 4')>=3D0)return fb(a);else{
+s_wd.s_oe=3Ds_wd.onerror;s_wd.onerror=3Doe;r=3Df(a);s_wd.onerror=3Ds_wd.s=
+_oe
+return r}}}function s_gtfset(e){return s_tfs}function s_gtfsoe(e){
+s_wd.onerror=3Ds_wd.s_oe;s_etfs=3D1;var =
+code=3Ds_gs(s_un);if(code)s_d.write(
+code);s_etfs=3D0;return true}function s_gtfsfb(a){return s_wd}
+function s_gtfsf(w){var p=3Dw.parent,l=3Dw.location;s_tfs=3Dw;if(p&&
+p.location!=3Dl&&p.location.host=3D=3Dl.host){s_tfs=3Dp;return =
+s_gtfsf(s_tfs)}
+return s_tfs}function =
+s_gtfs(){if(!s_tfs){s_tfs=3Ds_wd;if(!s_etfs)s_tfs=3D
+s_cet(s_gtfsf,s_tfs,s_gtfset,s_gtfsoe,s_gtfsfb)}return s_tfs}
+function s_ca(un){un=3Dun.toLowerCase();var =
+ci=3Dun.indexOf(','),fun=3Dci<0?
+un:un.substring(0,ci),imn=3D's_i_'+fun;if(s_d.images&&s_apv>=3D3&&
+!s_isopera&&(s_ns6<0||s_apv>=3D6.1)){s_ios=3D1;if(!s_d.images[imn]&&(
+!s_isns||(s_apv<4||s_apv>=3D5))){s_d.write('<im'+'g name=3D"'+imn
++'" height=3D1 width=3D1 border=3D0 =
+alt=3D"">');if(!s_d.images[imn])s_ios=3D0}}}
+function s_it(un){s_ca(un)}function s_mr(un,sess,q,ta){un=3D
+un.toLowerCase();var =
+ci=3Dun.indexOf(','),fun=3Dci<0?un:un.substring(0,ci
+),unc=3Ds_rep(fun,'_','-'),imn=3D's_i_'+fun,im,b,e,rs=3D'http'+(s_ssl?'s'=
+:''
+)+'://'+(s_ssl?'102':unc)+'.112.2O7.net/b/ss/'+un+'/1/G.5-PD-R/'
++sess+'?[AQB]&ndh=3D1'+(q?q:'')+(s_q?s_q:'')+'&[AQE]';if(s_ios){im=3Ds_wd=
+[
+imn]?s_wd[imn]:s_d.images[imn];if(!im)im=3Ds_wd[imn]=3Dnew =
+Image;im.src=3Drs
+if(rs.indexOf('&pe=3D')>=3D0&&(!ta||ta=3D=3D'_self'||ta=3D=3D'_top'||(s_w=
+d.name&&
+ta=3D=3Ds_wd.name))){b=3De=3Dnew =
+Date;while(e.getTime()-b.getTime()<500)e=3D
+new Date}return ''}return '<im'+'g sr'+'c=3D"'+rs
++'" width=3D1 height=3D1 border=3D0 alt=3D"">'}function s_gg(v){var =
+g=3D's_'+v
+return s_wd[g]||s_wd.s_disableLegacyVars?s_wd[g]:s_wd[v]}var s_qav=3D''
+function s_havf(t,a){var b=3Dt.substring(0,4),s=3Dt.substring(4),n=3D
+parseInt(s),k=3D's_g_'+t,m=3D's_vpm_'+t,q=3Dt,v=3Ds_gg('linkTrackVars'),e=
+=3D
+s_gg('linkTrackEvents');if(!s_wd['s_'+t])s_wd['s_'+t]=3D'';s_wd[k]=3Ds_wd=
+[
+m]?s_wd['s_vpv_'+t]:s_gg(t);if(s_lnk||s_eo){v=3Dv?v+',pageName,charSet,'
++'cookieDomainPeriods,cookieLifetime,eVarCFG,purchaseID':'';if(v&&
+!s_pt(v,',',s_isf,t))s_wd[k]=3D'';if(t=3D=3D'events'&&e)s_wd[k]=3Ds_fs(s_=
+wd[k
+],e)}s_wd[m]=3D0;if(t=3D=3D'charSet')q=3D'ce';else =
+if(t=3D=3D'cookieDomainPeriods'
+)q=3D'cdp';else if(t=3D=3D'cookieLifetime')q=3D'cl';else =
+if(t=3D=3D'channel')q=3D
+'ch';else if(t=3D=3D'campaign')q=3D'v0';else =
+if(s_num(s)){if(b=3D=3D'prop')q=3D'c'
++n;else if(b=3D=3D'eVar')q=3D'v'+n;else =
+if(b=3D=3D'hier')q=3D'h'+n}if(s_wd[k]&&t!=3D
+'linkName'&&t!=3D'linkType')s_qav+=3D'&'+q+'=3D'+s_ape(s_wd[k]);return =
+''}
+function s_hav(){var n,av=3D'charSet,cookieDomainPeriods,cookieLifetime'
++',pageName,channel,server,pageType,campaign,state,zip,events,product'
++'s,purchaseID,eVarCFG,linkName,linkType';for(n=3D1;n<26;n++)av+=3D',prop=
+'
++n+',eVar'+n+',hier'+n;s_qav=3D'';s_pt(av,',',s_havf,0);return s_qav}
+function =
+s_lnf(t,h){t=3Dt?t.toLowerCase():'';h=3Dh?h.toLowerCase():'';var
+te=3Dt.indexOf('=3D');if(t&&te>0&&h.indexOf(t.substring(te+1))>=3D0)
+return t.substring(0,te);return ''}function s_ln(h){if(s_gg(
+'linkNames'))return s_pt(s_gg('linkNames'),',',s_lnf,h);return ''}
+function =
+s_ltdf(t,h){t=3Dt?t.toLowerCase():'';h=3Dh?h.toLowerCase():'';var
+qi=3Dh.indexOf('?');h=3Dqi>=3D0?h.substring(0,qi):h;if(t&&h.substring(
+h.length-(t.length+1))=3D=3D'.'+t)return 1;return 0}function =
+s_ltef(t,h){
+t=3Dt?t.toLowerCase():'';h=3Dh?h.toLowerCase():'';if(t&&h.indexOf(t)>=3D0=
+)
+return 1;return 0}function s_lt(h){var lft=3Ds_gg(
+'linkDownloadFileTypes'),lef=3Ds_gg('linkExternalFilters'),lif=3Ds_gg(
+'linkInternalFilters')?s_gg('linkInternalFilters'):
+s_wd.location.hostname;h=3Dh.toLowerCase();if(s_gg('trackDownloadLinks'
+)&&lft&&s_pt(lft,',',s_ltdf,h))return 'd';if(s_gg('trackExternalLinks'
+)&&(lef||lif)&&(!lef||s_pt(lef,',',s_ltef,h))&&(!lif||!s_pt(lif,',',
+s_ltef,h)))return 'e';return ''}function s_lc(e){s_lnk=3Ds_co(this)
+s_gs('');s_lnk=3D'';if(this.s_oc)return this.s_oc(e);return true}
+function s_ls(){var l,ln,oc;for(ln=3D0;ln<s_d.links.length;ln++){l=3D
+s_d.links[ln];oc=3Dl.onclick?l.onclick.toString():'';if(oc.indexOf(
+"s_gs(")<0&&oc.indexOf("s_lc(")<0){l.s_oc=3Dl.onclick;l.onclick=3Ds_lc}}}=
+
+function s_bc(e){s_eo=3De.srcElement?e.srcElement:e.target;s_gs('')
+s_eo=3D''}function s_ot(o){var x=3Do.type,y=3Do.tagName;return (x&&
+x.toUpperCase?x:y&&y.toUpperCase?y:o.href?'A':'').toUpperCase()}
+function s_oid(o){var =
+t=3Ds_ot(o),p=3Do.protocol,c=3Do.onclick,n=3D'',x=3D0;if(
+!o.s_oid){if(o.href&&(t=3D=3D'A'||t=3D=3D'AREA')&&(!c||!p||p.toLowerCase(=
+
+).indexOf('javascript')<0))n=3Do.href;else if(c){n=3Ds_rep(s_rep(s_rep(
+s_rep(c.toString(),"\r",''),"\n",''),"\t",''),' ','');x=3D2}else if(
+o.value&&(t=3D=3D'INPUT'||t=3D=3D'SUBMIT')){n=3Do.value;x=3D3}else =
+if(o.src&&t=3D=3D
+'IMAGE')n=3Do.src;if(n){o.s_oid=3Ds_fl(n,100);o.s_oidt=3Dx}}return =
+o.s_oid}
+function s_rqf(t,un){var =
+e=3Dt.indexOf('=3D'),u=3De>=3D0?','+t.substring(0,e)
++',':'';return u&&u.indexOf(','+un+',')>=3D0?s_epa(t.substring(e+1)):''}
+function s_rq(un){var =
+c=3Dun.indexOf(','),v=3Ds_c_r('s_sq'),q=3D'';if(c<0)
+return s_pt(v,'&',s_rqf,un);return s_pt(un,',',s_rq,0)}var s_sqq,s_squ
+function s_sqp(t,a){var =
+e=3Dt.indexOf('=3D'),q=3De<0?'':s_epa(t.substring(e
++1));s_sqq[q]=3D'';if(e>=3D0)s_pt(t.substring(0,e),',',s_sqs,q);return =
+0}
+function s_sqs(un,q){s_squ[un]=3Dq;return 0}function s_sq(un,q){s_sqq=3D
+new Object;s_squ=3Dnew Object;s_sqq[q]=3D'';var =
+k=3D's_sq',v=3Ds_c_r(k),x,c=3D0
+s_pt(v,'&',s_sqp,0);s_pt(un,',',s_sqs,q);v=3D'';for(x in s_squ)s_sqq[
+s_squ[x]]+=3D(s_sqq[s_squ[x]]?',':'')+x;for(x in s_sqq)if(x&&s_sqq[x]&&(
+x=3D=3Dq||c<2)){v+=3D(v?'&':'')+s_sqq[x]+'=3D'+s_ape(x);c++}return =
+s_c_w(k,v,0
+)}function s_wdl(e){s_wd.s_wd_l=3D1;var =
+r=3Dtrue;if(s_wd.s_ol)r=3Ds_wd.s_ol(
+e);if(s_wd.s_ls)s_wd.s_ls();return r}function s_wds(un){un=3D
+un.toLowerCase();s_wd.s_wd_l=3D1;if(s_apv>3&&(!s_isie||!s_ismac||s_apv>=3D=
+
+5)){s_wd.s_wd_l=3D0;if(!s_wd.s_unl)s_wd.s_unl=3Dnew Array;s_wd.s_unl[
+s_wd.s_unl.length]=3Dun;if(s_d.body&&s_d.body.attachEvent){if(
+!s_wd.s_bcr&&s_d.body.attachEvent('onclick',s_bc))s_wd.s_bcr=3D1}
+else if(s_d.body&&s_d.body.addEventListener){if(!s_wd.s_bcr&&
+s_d.body.addEventListener('click',s_bc,false))s_wd.s_bcr=3D1}else{var
+ol=3Ds_wd.onload?s_wd.onload.toString():'';if(ol.indexOf("s_wdl(")<0){
+s_wd.s_ol=3Ds_wd.onload;s_wd.onload=3Ds_wdl}}}}function s_iepf(i,a){if(
+i.substring(0,1)!=3D'{')i=3D'{'+i+'}';if(s_d.body.isComponentInstalled(i,=
+
+'ComponentID')){var n=3Ds_pl.length;s_pl[n]=3Dnew =
+Object;s_pl[n].name=3Di
++':'+s_d.body.getComponentVersion(i,'ComponentID')}return 0}
+function s_vs(un,x){var s=3Ds_gg('visitorSampling'),g=3Ds_gg(
+'visitorSamplingGroup'),k=3D's_vsn_'+un+(g?'_'+g:''),n=3Ds_c_r(k),e=3D
+new Date,y=3De.getYear();e.setYear(y+10+(y<1900?1900:0));if(s){s*=3D100
+if(!n){if(!s_c_w(k,x,e))return 0;n=3Dx}if(n%10000>s)return 0}return 1}
+function s_dyasmf(t,m){if(t&&m&&m.indexOf(t)>=3D0)return 1;return 0}
+function s_dyasf(t,m){var =
+i=3Dt?t.indexOf('=3D'):-1,un,s;if(i>=3D0&&m){var
+un=3Dt.substring(0,i),s=3Dt.substring(i+1);if(s_pt(s,',',s_dyasmf,m))
+return un}return 0}function s_dyas(un,l,m){if(!m)m=3Ds_wd.location.host
+if(!m.toLowerCase)m=3Dm.toString();l=3Dl.toLowerCase();m=3Dm.toLowerCase(=
+)
+var nun=3Ds_pt(l,';',s_dyasf,m);if(nun)return nun;return un}
+function s_gs(un){un=3Dun.toLowerCase()
+var dyas=3Ds_gg('dynamicAccountSelection'),dyal=3Ds_gg(
+'dynamicAccountList'),dyam=3Ds_gg('dynamicAccountMatch');if(dyas&&dyal)
+un=3Ds_dyas(un,dyal,dyam);
+s_un=3Dun;var trk=3D1,tm=3Dnew Date,sed=3DMath&&Math.random?Math.floor(
+Math.random()*10000000000000):tm.getTime(),sess=3D's'+Math.floor(
+tm.getTime()/10800000)%10+sed,yr=3Dtm.getYear(),t,ta=3D'',q=3D'',qs=3D'';=
+yr=3D
+yr<1900?yr+1900:yr;t=3Dtm.getDate()+'/'+tm.getMonth()+'/'+yr+' '
++tm.getHours()+':'+tm.getMinutes()+':'+tm.getSeconds()+' '+tm.getDay()
++' '+tm.getTimezoneOffset();if(!s_q){var =
+tfs=3Ds_gtfs(),tl=3Dtfs.location,
+r=3Dtfs.document.referrer,s=3D'',c=3D'',v=3D'',p=3D'',bw=3D'',bh=3D'',j=3D=
+'1.0',g=3D
+s_wd.location,k=3Ds_c_w('s_cc','true',0)?'Y':'N',hp=3D'',ct=3D'',iepl=3Ds=
+_gg(
+'iePlugins'),pn=3D0,ps;if(s_apv>=3D4)s=3Dscreen.width+'x'+screen.height;i=
+f(
+s_isns||s_isopera){if(s_apv>=3D3){j=3D'1.1';v=3Ds_n.javaEnabled()?'Y':'N'=
+
+if(s_apv>=3D4){j=3D'1.2';c=3Dscreen.pixelDepth;bw=3Ds_wd.innerWidth;bh=3D=
+
+s_wd.innerHeight;if(s_apv>=3D4.06)j=3D'1.3'}}s_pl=3Ds_n.plugins}else if(
+s_isie){if(s_apv>=3D4){v=3Ds_n.javaEnabled()?'Y':'N';j=3D'1.2';c=3D
+screen.colorDepth;if(s_apv>=3D5){bw=3Ds_d.documentElement.offsetWidth;bh=3D=
+
+s_d.documentElement.offsetHeight;j=3D'1.3';if(!s_ismac&&s_d.body){
+s_d.body.addBehavior("#default#homePage");hp=3Ds_d.body.isHomePage(tl)?
+"Y":"N";s_d.body.addBehavior("#default#clientCaps");ct=3D
+s_d.body.connectionType;if(iepl){s_pl=3Dnew Array;s_pt(iepl,',',s_iepf,
+'');}}}}else r=3D'';if(!s_pl&&iepl)s_pl=3Ds_n.plugins}if(s_pl)while(pn<
+s_pl.length&&pn<30){ps=3Ds_fl(s_pl[pn].name,100)+';';if(p.indexOf(ps)<0)
+p+=3Dps;pn++}s_q=3D(g?'&g=3D'+s_ape(s_fl(g,255)):'')+(r?'&r=3D'+s_ape(s_f=
+l(r,
+255)):'')+(s?'&s=3D'+s_ape(s):'')+(c?'&c=3D'+s_ape(c):'')+(j?'&j=3D'+j:''=
+)+(
+v?'&v=3D'+v:'')+(k?'&k=3D'+k:'')+(bw?'&bw=3D'+bw:'')+(bh?'&bh=3D'+bh:'')+=
+(ct?
+'&ct=3D'+s_ape(ct):'')+(hp?'&hp=3D'+hp:'')+(s_vb?'&vb=3D'+s_vb:'')+(p?'&p=
+=3D'
++s_ape(p):'')}if(s_gg('usePlugins'))s_wd.s_doPlugins();q+=3D(t?'&t=3D'
++s_ape(t):'')+s_hav();if(s_lnk||s_eo){var o=3Ds_eo?s_eo:s_lnk;if(!o)
+return '';var =
+p=3Ds_wd.s_g_pageName,w=3D1,t=3Ds_ot(o),n=3Ds_oid(o),x=3Do.s_oidt,
+h,l,i,oc;if(s_eo&&o=3D=3Ds_eo){while(o&&!n&&t!=3D'BODY'){o=3Do.parentElem=
+ent?
+o.parentElement:o.parentNode;if(!o)return =
+'';t=3Ds_ot(o);n=3Ds_oid(o);x=3D
+o.s_oidt}oc=3Do.onclick?o.onclick.toString():'';if(oc.indexOf("s_gs(")>=3D=
+
+0)return =
+''}ta=3Do.target;h=3Do.href?o.href:'';i=3Dh.indexOf('?');h=3Ds_gg(
+'linkLeaveQueryString')||i<0?h:h.substring(0,i);l=3Ds_gg('linkName')?
+s_gg('linkName'):s_ln(h);t=3Ds_gg('linkType')?s_gg('linkType'
+).toLowerCase():s_lt(h);if(t&&(h||l))q+=3D'&pe=3Dlnk_'+(t=3D=3D'd'||t=3D=3D=
+'e'?
+s_ape(t):'o')+(h?'&pev1=3D'+s_ape(h):'')+(l?'&pev2=3D'+s_ape(l):'');else
+trk=3D0;if(s_gg('trackInlineStats')){if(!p){p=3Ds_wd.location.href;w=3D0}=
+p=3D
+p?s_fl(p,255):'';t=3Ds_ot(o);i=3Do.sourceIndex;if(s_gg('objectID')){n=3D
+s_gg('objectID');x=3D1;i=3D1}if(p&&n&&t)qs=3D'&pid=3D'+s_ape(p)+(w?'&pidt=
+=3D'+w:
+'')+'&oid=3D'+s_ape(n)+(x?'&oidt=3D'+x:'')+'&ot=3D'+s_ape(t)+(i?'&oi=3D'+=
+i:'')
+}s_wd.s_linkName=3Ds_wd.s_linkType=3Ds_wd.s_objectID=3Ds_lnk=3Ds_eo=3D'';=
+if(
+!s_wd.s_disableLegacyVars)s_wd.linkName=3Ds_wd.linkType=3Ds_wd.objectID=3D=
+''
+}if(!trk&&!qs)return '';var =
+code=3D'';if(un){if(trk&&s_vs(un,sed))code+=3D
+s_mr(un,sess,q+(qs?qs:s_rq(un)),ta);s_sq(un,trk?'':qs)}else if(
+s_wd.s_unl)for(var unn=3D0;unn<s_wd.s_unl.length;unn++){un=3Ds_wd.s_unl[
+unn];if(trk&&s_vs(un,sed))code+=3Ds_mr(un,sess,q+(qs?qs:s_rq(un)),ta)
+s_sq(un,trk?'':qs)}return code}function s_dc(un){un=3Dun.toLowerCase()
+var dyas=3Ds_gg('dynamicAccountSelection'),dyal=3Ds_gg(
+'dynamicAccountList'),dyam=3Ds_gg('dynamicAccountMatch');if(dyas&&dyal)
+un=3Ds_dyas(un,dyal,dyam);
+s_wds(un);s_ca(un);return s_gs(un)}
+
+// ###################################################
+// CODE CHANGE FOR FILE: PROTOCOL EXCLUSION 6/28/2005
+// ###################################################
+// OLD CODE:
+// s_code=3Ds_dc(s_account);if(s_code)s_d.write(s_code)
+// NEW CODE:
+   if(s_isValid) {  s_code=3Ds_dc(s_account);if(s_code)s_d.write(s_code) =
+}
+// END CODE CHANGE
+
+------=_NextPart_000_0069_01C76E40.27C39580--
